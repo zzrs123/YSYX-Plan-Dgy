@@ -188,16 +188,47 @@ class Cache{
 	
 	
 	}
+	//构造函数
+	Cache(int p_cache_size, int p_block_size, int p_set_size){
+		//外包给init
+		init(p_cache_size,p_block_size,p_set_size);
+	}
 
-	Cache(int)
+	~Cache(){
+		if (set_count)
+		{
+			blocks.clear();
+		}
+		
+	}
+
+};
 
 
 
+
+int main(){
+	//初始化Cache参数
+	Cache c(128,2,64);
+	//读o写 标志位
+	char rw;
+	//物理地址
+	int addr;
+
+	//加载trace
+	freopen("D:\\Download\\计算机系统\\cache模拟器\\trace\\trace.txt","r",stdin);//trace
+	while(scanf("%x %c",&addr,&rw)==2){
+		if(rw=='R'){
+			c.read(addr);
+		}
+		else if(rw == 'w'){
+			c.write(addr);
+		}
+	}
+	fclose(stdin);
+	c.show_statistic();
+
+	return 0;
 
 
 }
-
-
-
-
-int
