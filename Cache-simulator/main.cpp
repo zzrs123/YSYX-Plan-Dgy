@@ -134,11 +134,70 @@ class Cache{
 				//此时即为命中
 				hits++;
 				cout << "write finished.hit!" << endl;
-
-
-
+				return;
 			}
 		}
+		//未找到目标cache,即发生“写缺失”(上面计算出的地址不再blocks[]中)
+		cout << "target cache is not found" << endl;
 		
+		//采取写不分配，直接写入下一级缓冲区
+		for(int i = index; i < index + set_size; i++){
+			if(!blocks[i].is_valid){
+				blocks[i].is_valid = true;
+				blocks[i].tag = tag;
+
+				cout << "write finished!" << endl;
+				return;
+			}
+
+		}
+
+		//进入下一级cache进行递归
+		func_find(index,tag);
+
 	}
+	void func_find(int index, int tag){
+		for(int i = index; i < index + set_size; i++){
+			if(!blocks[i].is_valid){
+				blocks[i].is_valid = true;
+				blocks[i].tag = tag;
+
+				cout << "write_no complete!" << endl;
+				return;
+			}
+		}
+		index ++;
+		func_find(index,tag);
+	}
+	void show_statistic(){
+		cout << "Cache size:" << cache_size << endl;
+		cout << "block size:" << block_size << endl;
+		cout << "set size: " << set_size << endl;
+
+		cout << "total read/write:" << total << endl;
+		cout << "hit read/write:" << hits << endl;
+		cout << "replace : " << replaces << endl << endl;
+
+		if(total == 0) total = 1;
+		cout << "hit rate:" << (hits*1.0 / total)*100 << "%" << endl;
+		cout << "miss rate:" << ((total-hits)*1.0 / total)*100 << "%" << endl;
+
+
+		cout << "total time:" << total_time << endl;
+		cout << "average time" << total_time * 1.0 / total << endl; 
+	
+	
+	}
+
+	Cache(int)
+
+
+
+
+
 }
+
+
+
+
+int
