@@ -52,4 +52,11 @@ class Cache{
 			//在动态数组后再添加一个块儿
 		}
 	}
+	void read(int addr){//实现读操作
+		cout << "-- read from " << addr;
+		reads++;//读操作数+1
+		total++;//总次数+1
+
+		int
+	}
 }
