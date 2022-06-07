@@ -96,9 +96,49 @@ class Cache{
 
 				cout << "-- --- -- memory loaded" << endl;
 			}
+			else{
+				cout << "memory failed!" << endl;
+			}
 		}
+		//随机匹配
+		cout << "cache is full.Now let's replace" <<endl;
+		//采用随机替换，将数据放入block
+		int ran = rand()%set_size + index;
+		//替换次数+1
+		replaces++;
+
+		//更改有效位
+		blocks[ran].is_valid = true;
+		//标志位
+		blocks[ran].tag = tag;
+		cout << "replace finished!" << endl;
+
 	}
 	void write(int addr){//实现写操作
+		cout << "-- write to " << addr << endl;
 
+		writes++;
+		total++;
+
+		//寻找目标cache
+		int tag = addr / block_size;
+		//计算地址
+		int index = (tag / set_size) % set_count;
+
+		total_time += CACHE_READ_TIME;
+
+		for (int i = 0; i < index + set_size; i++){
+			if(!blocks[i].is_valid){
+				blocks[i].is_valid = true;
+				blocks[i].tag = tag;
+				//此时即为命中
+				hits++;
+				cout << "write finished.hit!" << endl;
+
+
+
+			}
+		}
+		
 	}
 }
