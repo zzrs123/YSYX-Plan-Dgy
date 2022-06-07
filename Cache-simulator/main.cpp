@@ -19,26 +19,39 @@ struct block{
 
 class Cache{
 	public:
+
 	int cache_size;
 	int block_size;
 	int set_size;
 
 	int set_count;
-	int hits,reads,writes,replaces,total,total_time;
+	//读、写的总次数
+	int total;
+	//读的次数
+	int reads;
+	//写的次数
+	int writes;
+	//命中次数
+	int hits;
+	//替换策略的随机替换次数
+	int replaces;
+	//访问时间
+	int total_time;
+
 	vector<struct block> blocks;
 
 	void init(int p_cache_size, int p_block_size, int p_set_size){
 		cache_size = p_cache_size;
 		block_size = p_block_size;
 		set_size = p_set_size;
+		
+		total = 0;
+		reads = 0;
+		writes = 0;
+		hits = 0;
+		replaces = 0;
 
-		total = 0;//读、写的总次数
-		reads = 0;//读的次数
-		writes = 0;//写的次数
-		hits = 0;//命中次数
-		replaces = 0;//替换策略的随机替换次数
-
-		total_time = 0;//访问时间
+		total_time = 0;
 
 		set_count = cache_size / block_size / set_size;
 
@@ -57,6 +70,35 @@ class Cache{
 		reads++;//读操作数+1
 		total++;//总次数+1
 
-		int
+		int tag = (tag / set_size) % set_count;
+		
+		int index = (tag / set_size) % set_count;
+
+		total_time = CACHE_READ_TIME;//时间
+
+		for(int i = index; i < index + set_size; i++){
+			if(blocks[i].is_valid && blocks[i].tag ==tag){//说明命中了
+				hits ++;
+				cout << "read finish, hit!" << endl;
+				return;
+			}
+		}
+		//上面循环中，若命中则退出，下面则为不命中
+		cout << " miss!" << endl;
+		
+		// 从内存加载
+		total_time += MEM_READ_TIME;
+
+		for(int i = index; i < index + set_size; i++){
+			if(!blocks[i].is_valid){
+				blocks[i].is_valid = true;
+				blocks[i].tag = tag;
+
+				cout << "-- --- -- memory loaded" << endl;
+			}
+		}
+	}
+	void write(int addr){//实现写操作
+
 	}
 }
