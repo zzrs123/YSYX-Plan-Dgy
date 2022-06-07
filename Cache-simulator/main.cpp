@@ -32,18 +32,19 @@ class Cache{
 		block_size = p_block_size;
 		set_size = p_set_size;
 
-		total = 0;
-		reads = 0;
-		writes = 0;
-		hits = 0;
-		replaces = 0;
+		total = 0;//读、写的总次数
+		reads = 0;//读的次数
+		writes = 0;//写的次数
+		hits = 0;//命中次数
+		replaces = 0;//替换策略的随机替换次数
 
-		total_time = 0;
+		total_time = 0;//访问时间
 
 		set_count = cache_size / block_size / set_size;
 
 		for(int i = 0; i < set_count * set_size; i++){
 			struct block b;
+		
 
 			b.is_valid = false;
 			b.tag = -1;
