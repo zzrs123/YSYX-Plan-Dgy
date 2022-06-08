@@ -19,9 +19,11 @@ struct block{
 
 class Cache{
 	public:
-
+	//cache大小 1024 2048 4096 8192 16384
 	int cache_size;
+	//block大小 8 16 32
 	int block_size;
+	//
 	int set_size;
 
 	int set_count;
@@ -206,10 +208,10 @@ class Cache{
 
 
 
-
+//Chebyshev
 int main(){
 	//初始化Cache参数
-	Cache c(128,2,64);
+	Cache c(4096,16,32);
 	//读o写 标志位
 	char rw;
 	//物理地址

@@ -1,42 +1,21 @@
 # Cache模拟器
 
-## 使用说明
-* 编译main.cpp
-    > gcc main.cpp -o main
+* 来自于2022年NWPU的计算机组成原理与体系结构的理论课实践作业。
 
-* 生成结果
-    > ./main tracefile > result.txt
+  目前个人感觉难度很大，cache还没有听懂，就要求对其进行编程建模。
 
-* 预览效果
-    ```
-    |L1 1KB|8B|直接映射|NONE|写直达法|
-    i-cache访存总次数：1300378105
-    命中率：91.5113 %
-    d-cache访存总次数：691011567
-    读次数：621498605|写次数：69512962
-    命中率：79.476 %
-    读命中率：82.2414 %|写命中率：54.7517 %
-    ```
-## 流程图
-![](process.png)
+* 现在交上了一份功能不完整的Code和报告，不同替换策略下的hit rate计算还没有写。
 
-## 实现功能
-* 分别记录i-cache和d-cache
-* 统计访存次数
-* 计算命中率
+* 留个坑有待后面填补吧。
 
-### 映射方式
-* 直接映射
-* 全相联映射
-* 组相联映射
+* 参考repo or blog：
 
-### 替换方式
-* 直接替换
-* Random——时间作为随机数种子
-* LRU——优先级数组
-* FIFO——记录进入顺序数组
-* LFU未实现（与LRU类似）
+  * https://www.cnblogs.com/dgwblog/p/12938825.html
+  * https://github.com/iamywang/Cache-Simulator
+  * [有关Cache的解释](https://blog.csdn.net/qq_35260622/article/details/51648645)
+  * [Cache缺失](https://bbs.csdn.net/topics/391492669)
+  * [手把手教我写Cache模拟器，没学会](https://www.findhao.net/easycoding/1717)
+  * [一个原创模拟器](https://bbs.pediy.com/thread-160003.htm)
 
-### 写方式
-* 写直达
-* 写回——dirty位
+
+
