@@ -36,6 +36,15 @@ mmdb下载地址：https://link.zhihu.com/?target=https%3A//gitee.com/mirrors/Pi
 
 ![image-20220626205409660](/home/zzrs123/.config/Typora/typora-user-images/image-20220626205409660.png)
 
+快速启动：
+
+```
+cd clash/
+./clash -d .
+```
+
+
+
 ## 5. Github配置
 
 http://blog.chinaunix.net/uid-24782829-id-3183604.html
