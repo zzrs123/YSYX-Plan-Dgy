@@ -168,4 +168,54 @@ https://zhuanlan.zhihu.com/p/98384704
 
 基本就可以通过一个终端来切换不同的端口，只需要通过命名来管理一下即可。
 
-## 7.
+## 7. 关于为什么要使用 Linux？
+
+我觉得这部分是最重要的，以为我一直不能很好的回答一些非CS的同学关于为何使用 Linux 的提问。
+
+- 比较两个文件是否完全相同？
+
+  在Linux下就是 `diff` 命令，如果文件太大，那就是 `mdSsum` 来比较 MD5 。输入这些命令很快，而在Windows下就必须下载 MD5 的计算工具。
+
+- 如何列出一个C语言项目中所有被包含的头文件？
+
+  Linux 下只需要：
+
+  ```shell
+  find . -name "*.[ch]" | xargs grep "#include" | sort | uniq
+  ```
+
+  看起来很神奇，具体来说就是 `man` 的使用。下面是对于ysyx官网的摘抄：
+
+  > Unix 的 “哲学”：
+  >
+  > 1. 每个工具只做一件事情, 但做到极致
+  > 2. 工具采用文本方式进行输入输出, 从而易于使用
+  > 3. 通过工具之间的组合来解决复杂问题
+  >
+  > Unix哲学的最后一点最能体现Linux和Windows的区别: 编程创造. 
+  >
+  > 如果把工具比作代码中的函数, 工具之间的组合就是一种编程. 而Windows的工具之间几乎无法组合, 因为面向普通用户的Windows需要强调易用性.
+  >
+  > 所以, 你应该使用Linux的原因非常简单: **作为一个码农, Windows一直在阻碍你思想, 能力和效率的提升.**
+
+## 8. 关于如何用好Linux?
+
+虽然已经接触了一年的 Ubuntu 了，主要用于机器人ROS的开发，但对于 Linux 确实是没有更深入学习。（ ysyx 居然号召我卸载 Windows 。）
+
+Linux 上也有与Windows 下类似的工具，总有对的工具帮自己做的更好，要愿意花时间来***找到、学习、使用。***
+
+> 平时基本需要的工具有：
+>
+> 1. 文件管理 - `cd`, `pwd`, `mkdir`, `rmdir`, `ls`, `cp`, `rm`, `mv`, `tar`
+> 2. 文件检索 - `cat`, `more`, `less`, `head`, `tail`, `file`, `find`
+> 3. 输入输出控制 - 重定向, 管道, `tee`, `xargs`
+> 4. 文本处理 - `vim`, `grep`, `awk`, `sed`, `sort`, `wc`, `uniq`, `cut`, `tr`
+> 5. 正则表达式
+> 6. 系统监控 - `jobs`, `ps`, `top`, `kill`, `free`, `dmesg`, `lsof`
+> 7. 上述工具覆盖了程序员绝大部分的需求 
+>    - 可以先从简单的尝试开始, 用得多就记住了, 记不住就`man`
+
+ysyx 推荐的教程：[The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)
+
+> 有中文版。
+
