@@ -4,7 +4,7 @@
 
 ## 2. Exploration on Ubuntu20.04
 
-之前为了机器人比赛，装过ubuntu1804，但也是之前的事情了。但这次装ubuntu换源的时候居然脑子抽风去粘贴了18的源过来，直接导致崩盘。
+之前为了机器人比赛，装过 Ubuntu18.04 ，但也是之前的事情了。但这次装 Ubuntu 换源的时候居然脑子抽风去粘贴了 Ubuntu18.04 的源过来，直接导致崩盘。
 
 ## 3. Installing Tools
 
@@ -257,3 +257,75 @@ git log --author="zzrs123"
 ![](/home/zzrs123/Pictures/gitlog_author.png)
 
 此外，git 的空提交：https://www.freecodecamp.org/news/how-to-push-an-empty-commit-with-git/，不过目前没感觉有什么用。用到再回来补充吧。
+
+```shell
+git commit --allow-empty -m "Empty-Commit"
+```
+
+## 10. 关于提交到自己的仓库
+
+修改分支：我想把pa0改为main，提交到自己的Github来管理:
+
+> #### 1、本地分支重命名
+>
+> ​	`git branch -m oldName newName`
+>
+> #### 2、 远程分支重命名
+>
+> - 重命名远程分支对应的本地分支
+>
+>   `git branch -m oldName newName`
+>
+> - 删除远程分支
+>
+>   `git push --delete origin oldName`
+>
+> - 上传新命名的本地分支
+>
+>   `git push origin newName`
+>
+> - 把修改的本地分支与远程分支关联
+>
+>   `git branch --set-upstream-to origin/newName`
+>
+> #### 3、查看当前代码仓库源
+>
+> - 查看当前源
+>
+>   `git remote -v`
+>
+> - 重设
+>
+>   `git remote set-url origin xxxx_url`
+
+这个项目代码本来是跟源仓库绑定的，问了群里大佬，说只改动url不会有事，又折腾了很久，成功将两个分支`main`和`oscpu`提交到了我的仓库，具体怎么实现的可以等后面再实践和整理。
+
+反复报错了很多，就是连接不上远端，推送到了没有连接的远端...等等。阻碍主要是在于：
+
+1. 本地是否能够识别origin的url，这个通过一些设置即可解决
+2. 远端新建立了一个仓库，顺手初始化了一个 License 和 README.md，这造成了本地和远端的冲突。
+
+主要解决办法：
+
+1. 对于第一个阻碍，设置url即可。具体方法参考https://blog.csdn.net/weixin_42094764/article/details/118443330
+2. 主要是把远端pull了下来，然后再进行push，这样远端和本地就同步了。https://blog.csdn.net/generallizhong/article/details/96115192
+
+但在这之后，虽然看到本地提交到了自己想提交的仓库，但是提交还是需要：
+
+```shell
+git push ssh-addrss main
+```
+
+而不能通过 origin 来代替。
+
+参考一下文章：https://cloud.tencent.com/developer/article/1861466
+
+其实很简单，自己在.git 文件夹下的 config 文件中 把 url 改成了 https 地址，而自 2021 年起，Github 不再支持账户密码登录远端，把 config 文件中的 url  换成 ssh 地址即可正常 push。
+
+git如何合并远端两个分支：
+
+- [git如何合并远程2个分支,总步骤](https://blog.51cto.com/u_15060464/4339663)
+- [git merge命令  |  解决Git中fatal: refusing to merge unrelated histories](https://blog.csdn.net/generallizhong/article/details/96115192)
+- [处理 git 合并时的冲突问题(即两个分支下的同名文件冲突)](https://www.cnblogs.com/lowmanisbusy/p/9054087.html)
+
+当然，得检查一下自己的 git log 是否正常。检验后都记录在案，放心。
