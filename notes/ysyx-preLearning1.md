@@ -219,3 +219,8 @@ ysyx 推荐的教程：[The Missing Semester of Your CS Education](https://missi
 
 > 有中文版。
 
+## 9. Git 相关的操作
+
+其实之前就接触过 git，但是现在看来根本不了解。
+
+这次主要是亲身体验了`git branch`的用处，**即一个分支下做的改变不会影响另一分支**。我觉得这才是版本控制的精髓所在。
