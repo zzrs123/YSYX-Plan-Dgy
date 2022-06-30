@@ -264,6 +264,8 @@ git commit --allow-empty -m "Empty-Commit"
 
 此外，还有一个可视化学习 Git 的网站：http://onlywei.github.io/explain-git-with-d3/
 
+以及一个比较有趣的教程https://ysyx.oscc.cc/docs/ics-pa/git.html#%E5%85%89%E7%8E%89
+
 ## 10. 关于提交到自己的仓库
 
 修改分支：我想把pa0改为main，提交到自己的Github来管理:
