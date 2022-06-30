@@ -251,6 +251,7 @@ git checkout branchname
 git log
 # 筛选指定用户的提交
 git log --author="zzrs123"
+# 参考：https://www.codegrepper.com/code-examples/shell/git+log+by+author
 ```
 
 ![](/home/zzrs123/Pictures/gitlog_author.png)
