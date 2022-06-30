@@ -246,6 +246,13 @@ git diff
 # 这就是git的魔力。
 # 切换分支
 git checkout branchname
+
+# 历史记录
+git log
+# 筛选指定用户的提交
+git log --author="zzrs123"
 ```
 
- 
+![](/home/zzrs123/Pictures/gitlog_author.png)
+
+此外，git 的空提交：https://www.freecodecamp.org/news/how-to-push-an-empty-commit-with-git/，不过目前没感觉有什么用。用到再回来补充吧。
