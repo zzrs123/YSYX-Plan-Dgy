@@ -217,6 +217,8 @@ Linux 上也有与Windows 下类似的工具，总有对的工具帮自己做的
 
 ysyx 推荐的教程：[The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)
 
+命令行教程：https://github.com/jlevy/the-art-of-command-line
+
 > 有中文版。
 
 ## 9. Git 相关的操作
@@ -224,3 +226,26 @@ ysyx 推荐的教程：[The Missing Semester of Your CS Education](https://missi
 其实之前就接触过 git，但是现在看来根本不了解。
 
 这次主要是亲身体验了`git branch`的用处，**即一个分支下做的改变不会影响另一分支**。我觉得这才是版本控制的精髓所在。
+
+具体为：
+
+```shell
+git branch
+# 查看分支
+git checkout -b pa0
+# 创建pa0分支
+# 此后的修改和提交只在该分支下可见。
+git status
+# 查看上次的修改（未提交）
+git diff
+# 查看修改内容
+#通过git add添加要提交的更改，并发出git commit
+# git commit 之后就能通过git log 查看提交记录
+
+# 以上这些修改都只在pa0下，切换回master就会发现没有改动。
+# 这就是git的魔力。
+# 切换分支
+git checkout branchname
+```
+
+ 
