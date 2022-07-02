@@ -126,3 +126,8 @@ int main(int argc,char **argv){
 ```
 
 ![](/home/zzrs123/Pictures/verilator_my_example.png)
+
+参考教程：https://blog.csdn.net/qq_54467680/article/details/123617689
+
+回头自己梳理一下。
+
