@@ -81,7 +81,7 @@ verilator --version
 参考教程：
 
 1. [Unbuntu21.04安装Verilator --4.210](https://blog.csdn.net/qq_43209432/article/details/123049094)
-2. 官网：差别是没有切换分支，切换分支才能下载4.210https://verilator.org/guide/latest/install.html
+2. 官网：差别是没有切换分支，切换分支才能下载4.210这个版本https://verilator.org/guide/latest/install.html
 
 
 
@@ -90,7 +90,7 @@ verilator --version
 上面的示例非常简单, 甚至算不上是一个真正的电路模块. 接下来我们编写一个真正的电路模块, 双控开关, 来进行测试. 编写如下的verilog代码:
 
 ```verilog
-module top(
+module our_OnOff(
   input a,
   input b,
   output f
@@ -98,3 +98,31 @@ module top(
   assign f = a ^ b;
 endmodule
 ```
+
+main.cpp编写：
+
+```c++
+#include<stdio.h>
+#include<stdlib.h>
+#include<assert.h>
+#include"Vour_OnOff.h"
+
+int main(int argc,char **argv){
+  Verilated::commandArgs(argc,argv);
+  Vour_OnOff *top = new Vour_OnOff("top");
+  while(!Verilated::gotFinish()){
+    int a = rand() & 1;
+    int b = rand() & 1;
+    top->a = a;
+    top->b = b;
+    top->eval();
+    printf("a=%d, b=%d, f=%d\n", a, b, top->f);
+    assert(top->f == a ^ b);
+  }
+  delete top;
+  return 0;
+
+}
+```
+
+![](/home/zzrs123/Pictures/verilator_my_example.png)
