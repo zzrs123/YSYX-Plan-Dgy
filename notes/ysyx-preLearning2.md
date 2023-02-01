@@ -131,3 +131,5 @@ int main(int argc,char **argv){
 
 回头自己梳理一下。
 
+## 4. GTKWave 查看波形
+
